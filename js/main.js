@@ -14,10 +14,17 @@ $(function onReady() {
   var keypressCounter = 0;
   
   var end, start;
+  
+  var top10 =[];
+  
   // attach a keyup listener to the window object 
   $(window).keyup(function onKeyup(eventArgument) {
     // increment the keydownCounter by 1
-    keypressCounter++;
+    if (keypressCounter < 50) {
+      keypressCounter++;}
+      else {
+        return;
+      }
     
     
 
@@ -28,9 +35,14 @@ $(function onReady() {
   
   end = new Date();
    if (keypressCounter === 50) { 
-      alert("You got up to 50 in " + (end.getTime() - start.getTime()) + " seconds.")}
-      
-      
+      alert("You got up to 50 in " + (end.getTime() - start.getTime()) + " seconds.");
+     
+      var  times = end.getTime() - start.getTime();
+      top10.push(times);
+      console.log(top10);
+   }
+ 
+
     // set the text of the keyupCell
     keypressCell.text(keypressCounter);
   });
